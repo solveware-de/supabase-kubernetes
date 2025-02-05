@@ -79,7 +79,7 @@ data:
       const memoryLimitMb = 150
       const workerTimeoutMs = 1 * 60 * 1000
       const noModuleCache = false
-      const importMapPath = null
+      const importMapPath = {{ if .Values.functions.environment.IMPORT_MAP_PATH }}"{{ .Values.functions.environment.IMPORT_MAP_PATH }}"{{- else }}null{{- end }}
       const envVarsObj = Deno.env.toObject()
       const envVars = Object.keys(envVarsObj).map((k) => [k, envVarsObj[k]])
 

@@ -1042,6 +1042,9 @@ functions:
     DB_PORT: 5432
     DB_DRIVER: postgresql
     DB_SSL: disable  # disable, allow, prefer, require, verify-ca, verify-full
+    # additional flag to correctly inject import map path to edge functions main worker
+    # otherwise dependencies won't be resolved correctly
+    # IMPORT_MAP_PATH: "/home/deno/functions/import_map.json"
   # Mount user functions
   # volumeMounts:
   #   - name: my_functions
