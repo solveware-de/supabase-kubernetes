@@ -89,6 +89,10 @@ spec:
                   name: {{ include "supabase.secret.jwt" . }}
                   key: secret
                   {{- end }}
+            {{- if not .Values.functions.environment.SUPABASE_URL }}
+            - name: SUPABASE_URL
+              value: "http://{{ include "supabase.kong.fullname" . }}:{{ .Values.kong.service.port }}"
+            {{- end }}
             - name: SUPABASE_ANON_KEY
               valueFrom:
                 secretKeyRef:
